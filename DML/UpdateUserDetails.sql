@@ -1,7 +1,7 @@
 DELIMITER $$
 CREATE PROCEDURE `UpdateUserDetails`(IN `UserId` INT(10), IN `UserName` VARCHAR(100), IN `CompanyName` VARCHAR(100), 
-IN `CompanyRegNo` VARCHAR(15), IN `CompanyGST` VARCHAR(15), IN `Email` VARCHAR(20), IN `MobileNo` INT(15),
- IN `CompanyTin` VARCHAR(100), IN `LogoPath` VARCHAR(100)) 
+IN `CompanyRegNo` VARCHAR(15), IN `CompanyGST` VARCHAR(15), IN `Email` VARCHAR(20), IN `MobileNo` VARCHAR(11),
+ IN `CompanyTin` VARCHAR(100), IN `LogoPath` VARCHAR(100), OUT `Response` VARCHAR(100)) 
  BEGIN
  UPDATE 
         userdetails 
@@ -22,5 +22,6 @@ IN `CompanyRegNo` VARCHAR(15), IN `CompanyGST` VARCHAR(15), IN `Email` VARCHAR(2
 			userdetails(Name, CompanyName, CompanyRegNo,CompanyGST,Email, MobileNo, CompanyTin, LogoPath)
 		VALUES(UserName, CompanyName, CompanyRegNo, CompanyGST, Email, MobileNo, CompanyTin, LogoPath);
 	END IF;	
+	SET Response = 'Success';
  END$$
 DELIMITER ;

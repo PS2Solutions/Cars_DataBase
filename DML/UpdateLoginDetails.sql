@@ -1,5 +1,5 @@
 DELIMITER $$
-CREATE PROCEDURE `UpdateLoginDetails`(IN `userName` VARCHAR(100), IN `password` VARCHAR(100))
+CREATE PROCEDURE `UpdateLoginDetails`(IN `userName` VARCHAR(100), IN `password` VARCHAR(100), OUT `Response` VARCHAR(100))
 BEGIN
  UPDATE 
         logindetails 
@@ -13,5 +13,6 @@ BEGIN
 			logindetails(UserName, Password)
 		VALUES(userName, password);
 	END IF;	
+	SET Response = 'Success';
  END$$
 DELIMITER ;
