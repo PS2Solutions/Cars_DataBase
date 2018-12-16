@@ -90,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `customers` (
   `Address1` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
   `Address2` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
   `Email` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ContactNo` int(11) DEFAULT NULL,
+  `ContactNo` varchar(11) DEFAULT NULL,
   `RegistrationNo` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -280,7 +280,7 @@ CREATE TABLE IF NOT EXISTS `userdetails` (
   `CompanyRegNo` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `CompanyGST` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `Email` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `MobileNo` int(11) DEFAULT NULL,
+  `MobileNo` varchar(11) DEFAULT NULL,
   `CompanyTin` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `LogoPath` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`ID`)

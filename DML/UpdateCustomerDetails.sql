@@ -1,7 +1,7 @@
 DELIMITER $$
 CREATE PROCEDURE `UpdateCustomerDetails`(IN `CustomerID` INT(10), IN `Name` VARCHAR(100), IN `RegistrationNo` VARCHAR(100), 
-IN `ContactNo` VARCHAR(15), IN `CompanyName` VARCHAR(30), IN `Email` VARCHAR(20), IN `Address1` varchar(100),
- IN `Address2` VARCHAR(100)) 
+IN `ContactNo` VARCHAR(11), IN `CompanyName` VARCHAR(30), IN `Email` VARCHAR(20), IN `Address1` varchar(100),
+ IN `Address2` VARCHAR(100), OUT `response` VARCHAR(100)) 
  BEGIN
  UPDATE 
         customers 
@@ -21,5 +21,6 @@ IN `ContactNo` VARCHAR(15), IN `CompanyName` VARCHAR(30), IN `Email` VARCHAR(20)
 			customers(Name, CompanyName, RegistrationNo,ContactNo,Email, Address1, Address2)
 		VALUES(Name, CompanyName, RegistrationNo, ContactNo, Email, Address1, Address2);
 	END IF;	
+	SET response = 'Success';
  END$$
 DELIMITER ;
