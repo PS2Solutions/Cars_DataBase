@@ -132,7 +132,7 @@ CREATE TABLE IF NOT EXISTS `labors` (
   `IdentityNo` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `Address1` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `Address2` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `PhoneNumber` int(12) DEFAULT NULL,
+  `PhoneNumber`  VARCHAR(11) DEFAULT NULL,
   `Wage` int(10) DEFAULT NULL,
   `JoiningDate` datetime DEFAULT NULL,
   `ResignationDate` datetime DEFAULT NULL,
@@ -285,6 +285,20 @@ CREATE TABLE IF NOT EXISTS `userdetails` (
   `LogoPath` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Designations`
+--
+DROP TABLE IF EXISTS `Designations`;
+CREATE TABLE IF NOT EXISTS `Designations` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Designation` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
