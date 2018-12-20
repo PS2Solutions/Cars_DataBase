@@ -179,7 +179,7 @@ CREATE TABLE IF NOT EXISTS `materials` (
   `Name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `Code` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `Remark` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `PerpointRate` int(20) DEFAULT NULL,
+  `PerpointRate` DECIMAL(20)  DEFAULT NULL,
   `Brand` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `WarrantyPeriod` int(11) DEFAULT NULL,
   `WarrantyEligibility` tinyint(1) DEFAULT NULL,
