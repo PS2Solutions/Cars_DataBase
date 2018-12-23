@@ -298,6 +298,13 @@ CREATE TABLE IF NOT EXISTS `Designations` (
   PRIMARY KEY (`ID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+ALTER TABLE `contracts` ADD `AgrementReference` VARCHAR(20) NOT NULL AFTER `LastCollectionDate`;
+
+DROP TABLE IF EXISTS `configuration`;
+CREATE TABLE IF NOT EXISTS `configuration` (
+  `QuotationIndex` int(5) NOT NULL,
+  `ContractIndex` int(5) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 COMMIT;
 
