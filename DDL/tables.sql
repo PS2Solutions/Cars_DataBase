@@ -179,7 +179,7 @@ CREATE TABLE IF NOT EXISTS `materials` (
   `Name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `Code` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `Remark` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `PerpointRate` int(20) DEFAULT NULL,
+  `PerpointRate` DECIMAL(20)  DEFAULT NULL,
   `Brand` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `WarrantyPeriod` int(11) DEFAULT NULL,
   `WarrantyEligibility` tinyint(1) DEFAULT NULL,
@@ -298,6 +298,13 @@ CREATE TABLE IF NOT EXISTS `Designations` (
   PRIMARY KEY (`ID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+ALTER TABLE `contracts` ADD `AgrementReference` VARCHAR(20) NOT NULL AFTER `LastCollectionDate`;
+
+DROP TABLE IF EXISTS `configuration`;
+CREATE TABLE IF NOT EXISTS `configuration` (
+  `QuotationIndex` int(5) NOT NULL,
+  `ContractIndex` int(5) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 COMMIT;
 
