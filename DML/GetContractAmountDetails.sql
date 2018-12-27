@@ -10,28 +10,28 @@ CREATE PROCEDURE `GetContractAmountDetails`()
 		(SELECT 
 			 ID 
 			 ,ReferenceNo
-			 ,CollectedAmount 
+			 ,IFNULL(CollectedAmount,0) AS CollectedAmount
 		 FROM contracts c) CC JOIN
 		 (
 			SELECT 
 				LBC.CID
-				,LBC.LaborAmount
-				,EPDT.PurchaseAmount 
+				,IFNULL(LBC.LaborAmount,0) AS LaborAmount
+				,IFNULL(EPDT.PurchaseAmount ,0) AS PurchaseAmount
 			FROM 
 			(SELECT 
 				clc.ContractID AS CID
-				,SUM(clc.Wage)+SUM(clc.TA)+SUM(clc.FA)+SUM(clc.OverTime) AS LaborAmount
+				,SUM(IFNULL(clc.Wage,0))+SUM(IFNULL(clc.TA,0))+SUM(IFNULL(clc.FA,0))+SUM(IFNULL(clc.OverTime,0)) AS LaborAmount
 			FROM  
 				contractlaborchargedetails clc
 			GROUP BY 
 				clc.ContractID)LBC JOIN
 			(SELECT 
 				epd.ContractID
-				,SUM(epd.Amount) AS PurchaseAmount
+				,SUM(IFNULL(epd.Amount,0)) AS PurchaseAmount
 			FROM  
 				extrapurchasedetails epd
 			GROUP BY 
 				epd.ContractID) EPDT ON LBC.CID = EPDT.ContractID 
-		  ) AMT ON CC.ID = AMT.CID; 
+		  ) AMT ON CC.ID = AMT.CID;
  END$$
 DELIMITER ;
