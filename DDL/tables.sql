@@ -203,7 +203,7 @@ DROP TABLE IF EXISTS `quotationdetails`;
 CREATE TABLE IF NOT EXISTS `quotationdetails` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `QuotationID` int(11) DEFAULT NULL,
-  `MaterialID` int(11) DEFAULT NULL,
+  `MaterialID` int(11) DEFAULT NULL,	
   `UnitRate` decimal(10,3) DEFAULT NULL,
   `Quantity` int(10) DEFAULT NULL,
   `Amount` decimal(10,3) DEFAULT NULL,
