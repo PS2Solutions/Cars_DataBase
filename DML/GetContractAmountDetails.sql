@@ -1,17 +1,17 @@
 DELIMITER $$
 CREATE PROCEDURE `GetContractAmountDetails`() 
- BEGIN
+BEGIN
 	 SELECT 
-		AMT.CID  AS ContractID
+		CC.ID  AS ContractID
 		,CC.ReferenceNo
-		,AMT.LaborAmount+AMT.PurchaseAmount AS Amount
-		,CC.CollectedAmount  AS  CollectedAmount 
+		,IFNULL(AMT.LaborAmount,0)+IFNULL(AMT.PurchaseAmount,0) AS Amount
+		,IFNULL(CC.CollectedAmount,0)  AS  CollectedAmount 
 	 FROM  
 		(SELECT 
 			 ID 
 			 ,ReferenceNo
 			 ,IFNULL(CollectedAmount,0) AS CollectedAmount
-		 FROM contracts c) CC JOIN
+		 FROM contracts c) CC LEFT JOIN
 		 (
 			SELECT 
 				LBC.CID
@@ -24,7 +24,7 @@ CREATE PROCEDURE `GetContractAmountDetails`()
 			FROM  
 				contractlaborchargedetails clc
 			GROUP BY 
-				clc.ContractID)LBC JOIN
+				clc.ContractID)LBC LEFT JOIN
 			(SELECT 
 				epd.ContractID
 				,SUM(IFNULL(epd.Amount,0)) AS PurchaseAmount

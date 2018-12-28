@@ -299,6 +299,7 @@ CREATE TABLE IF NOT EXISTS `Designations` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 ALTER TABLE `contracts` ADD `AgrementReference` VARCHAR(20) NOT NULL AFTER `LastCollectionDate`;
+ALTER TABLE `contractlaborchargedetails` ADD `Remark` VARCHAR(500) NOT NULL AFTER `OverTime`;
 
 DROP TABLE IF EXISTS `configuration`;
 CREATE TABLE IF NOT EXISTS `configuration` (
