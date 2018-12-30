@@ -2,7 +2,7 @@ DELIMITER $$
 CREATE PROCEDURE `GetContractLastMonthReport`()
  BEGIN
 SELECT 
-CNTT.ReferenceNo AS 'Reference No',CNTT.StartDate as 'Start Date',SUM(IFNULL(AMT.LaborAmount,0))+ SUM(IFNULL(AMT.PurchaseAmount,0)) as 'Amount', CNTT.CollectedAmount	 as 'Collected Amount'
+CNTT.ReferenceNo AS 'Reference No',CNTT.StartDate as 'Start Date',(IFNULL(AMT.LaborAmount,0) + IFNULL(AMT.PurchaseAmount,0)) as 'Amount', CNTT.CollectedAmount	 as 'Collected Amount'
 FROM 
 (SELECT cnt.ID,cnt.ReferenceNo, cnt.StartDate,cnt.CollectedAmount
 FROM 
