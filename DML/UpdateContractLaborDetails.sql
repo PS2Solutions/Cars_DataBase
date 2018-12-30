@@ -1,10 +1,11 @@
 DELIMITER $$
-CREATE PROCEDURE `UpdateContractLaborDetails`(IN `ContractID` INT(11), IN `LaborID` INT(11)) 
+CREATE PROCEDURE `UpdateContractLaborDetails`(IN `CID` INT(11), IN `LID` INT(11), OUT `response` VARCHAR(100)) 
  BEGIN
-	IF NOT EXISTS (SELECT 1 FROM contractlabordetails WHERE ContractID = ContractID and LaborID = LaborID) THEN 
+	IF NOT EXISTS (SELECT ID FROM contractlabordetails WHERE (ContractID = CID and LaborID = CID)) THEN 
 		INSERT INTO
 			contractlabordetails(ContractID, LaborID)
-		VALUES(ContractID, LaborID);
+		VALUES(CID, LID);
+		SET response = 'Success';
 	END IF;	
  END$$
 DELIMITER ;
