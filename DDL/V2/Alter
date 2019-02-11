@@ -1,0 +1,1 @@
+ALTER TABLE `reports` ADD `ReportType` INT(2) NOT NULL DEFAULT '0' AFTER `IsFilterAvailable`;
