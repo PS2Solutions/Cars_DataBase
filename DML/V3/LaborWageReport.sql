@@ -1,6 +1,6 @@
 DROP PROCEDURE IF EXISTS LaborWageReport;
 DELIMITER $$
-CREATE PROCEDURE `LaborWageReport`( IN `DateFrom` datetime,IN `DateTo` datetime, IN `ContractID` int,IN `QuoteID` int) 
+CREATE PROCEDURE `LaborWageReport`( IN `DateFrom` datetime,IN `DateTo` datetime, IN `ContractID` int,IN `QuoteID` int, IN `LaborID` int)
 BEGIN
 SELECT 
 	LBRS.LaborID AS LID, LBRS.Name as Name, LBRS.Designation as Designation

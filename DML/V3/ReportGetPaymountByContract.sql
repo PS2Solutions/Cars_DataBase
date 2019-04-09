@@ -1,10 +1,11 @@
+DROP PROCEDURE IF EXISTS ReportGetPaymountByContract;
 DELIMITER $$
 CREATE PROCEDURE `ReportGetPaymountByContract`(IN `DateFrom` datetime,IN `DateTo` datetime, IN `ContractID` int,IN `QuoteID` int, IN `LaborID` int)
 BEGIN
 	Select CNTR.ID, 
 	CNTR.ReferenceNo As 'Reference Number',
-	CNTR.StartDate As 'Start Date',
-	CNTR.EndDate As 'End Date',
+	Date_Format(CNTR.StartDate,'%d-%M-%Y') As 'Start Date',
+	Date_Format(CNTR.EndDate,'%d-%M-%Y') As 'End Date',
 	CNTR.AgrementReference As 'Agreement Reference', 
 	IFNULL(CNPY.Amount,0) as 'Collected Amount',
 	CNPY.Date As 'Collected Date'

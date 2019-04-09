@@ -1,11 +1,11 @@
 DROP PROCEDURE IF EXISTS ContractorCollectionReport;
 DELIMITER $$
-CREATE PROCEDURE `ContractorCollectionReport`( IN `DateFrom` datetime,IN `DateTo` datetime, IN `ContractID` int,IN `QuoteID` int) 
+CREATE PROCEDURE `ContractorCollectionReport`( IN `DateFrom` datetime,IN `DateTo` datetime, IN `ContractID` int,IN `QuoteID` int, IN `LaborID` int)
 BEGIN
 SELECT 
 	q.Title AS Contract
-    ,c.CollectedAmount As Collected_Amount
-    ,c.LastCollectionDate AS Collected_Date
+    ,c.CollectedAmount As 'Collected Amount'
+    ,Date_Format(c.LastCollectionDate,'%d-%M-%Y') AS 'Collected Date'
 	,SUM(IFNULL(clc.Wage,0))+SUM(IFNULL(clc.TA,0))+SUM(IFNULL(clc.FA,0))
     +SUM(IFNULL(clc.OverTime,0))+SUM(IFNULL(epd.Amount,0)) AS Payment
     ,IFNULL(c.CollectedAmount,0) - (SUM(IFNULL(clc.Wage,0))+SUM(IFNULL(clc.TA,0))+SUM(IFNULL(clc.FA,0))
@@ -17,6 +17,6 @@ SELECT
 	Inner Join labors LBRS on LBRS.ID = CLC.LaborID
 	LEFT JOIN extrapurchasedetails epd on clc.LaborID= epd.LaborID
 	Where
-	clc.ContractID = ContractID
+	clc.ContractID = ContractID;
 END$$
 DELIMITER ;

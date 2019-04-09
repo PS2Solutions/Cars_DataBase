@@ -7,7 +7,7 @@ SELECT
 		,CC.ReferenceNo As 'Reference Number'
 		,IFNULL(AMT.LaborAmount,0)+IFNULL(AMT.PurchaseAmount,0) AS 'Amount Paid'
 		,IFNULL(CC.CollectedAmount,0)  AS  'Collected Amount' 
-		,CC.CollectedDate AS 'Amount Collected Date'
+		,Date_Format(CC.CollectedDate,'%d-%M-%Y') AS 'Amount Collected Date'
 	 FROM  
 		(Select CNTR.ID, 
 			CNTR.ReferenceNo,

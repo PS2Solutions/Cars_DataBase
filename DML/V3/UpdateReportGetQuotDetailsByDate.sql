@@ -2,7 +2,7 @@ DROP PROCEDURE IF EXISTS ReportGetQuotDetailsByDate;
 DELIMITER $$
 CREATE PROCEDURE `ReportGetQuotDetailsByDate`( IN `DateFrom` datetime,IN `DateTo` datetime, IN `ContractID` int,IN `QuoteID` int, IN `LaborID` int) 
 BEGIN
-SELECT CTPE.Title, CTPE.ReferenceNo as 'Reference No',CTPE.CreatedDate as 'Created Date',CTPE.Amount, 
+SELECT CTPE.Title, CTPE.ReferenceNo as 'Reference No',Date_Format(CTPE.CreatedDate,'%d-%M-%Y') as 'Created Date',CTPE.Amount, 
 CTPE.Status, CTPE.Name AS 'Customer Name',CTPE.Type AS 'Quotation Type', IFNULL(CNTR.ID,'Not yet Contract') as Contract
  from (
 (SELECT QUOT.ContractID, QUOT.Title as 'Title',QUOT.ReferenceNo, QUOT.CreatedDate, QUOT.Amount, 

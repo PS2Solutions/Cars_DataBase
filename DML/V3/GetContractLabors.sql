@@ -1,3 +1,4 @@
+DROP PROCEDURE IF EXISTS GetContractLabors;
 DELIMITER $$
 CREATE PROCEDURE `GetContractLabors`(IN `ContractId` INT(10)) 
  BEGIN
