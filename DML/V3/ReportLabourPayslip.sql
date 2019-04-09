@@ -1,8 +1,9 @@
+DROP PROCEDURE IF EXISTS ReportLabourPayslip;
 DELIMITER $$
 CREATE PROCEDURE `ReportLabourPayslip`(IN `DateFrom` datetime,IN `DateTo` datetime, IN `ContractID` int,IN `QuoteID` int, IN `LaborID` int)
 BEGIN
 SELECT LBPYT.Amount as 'Amount Paid', 
-LBPYT.Date as 'Amount Paid Date',
+Date_Format(LBPYT.Date,'%d-%M-%Y') as 'Amount Paid Date',
 	SUM(IFNULL(CLCD.Wage,0))+SUM(IFNULL(CLCD.TA,0))+SUM(IFNULL(CLCD.FA,0))+SUM(IFNULL(CLCD.OverTime,0)) AS 'Payable Amount',
 	(SUM(IFNULL(CLCD.Wage,0))+SUM(IFNULL(CLCD.TA,0))+SUM(IFNULL(CLCD.FA,0))+SUM(IFNULL(CLCD.OverTime,0)) - LBPYT.Amount) as 'Amount To Pay'
 	from
