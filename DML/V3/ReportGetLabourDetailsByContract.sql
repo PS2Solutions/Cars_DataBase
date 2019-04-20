@@ -10,12 +10,12 @@ FROM
  (
      SELECT
          lac.LaborID, 
-		 Labor.Name,
-		 Labor.Designation
+		 Labors.Name,
+		 Labors.Designation
      ,SUM(IFNULL(lac.Wage,0))+SUM(IFNULL(lac.TA,0))+SUM(IFNULL(lac.FA,0))+SUM(IFNULL(lac.OverTime,0)) AmountToPay
      FROM 
      contractlaborchargedetails lac
-	 inner join Labor on lac.LaborID =  Labor.ID
+	 left join Labors on lac.LaborID =  Labors.ID
 	 WHERE  (DATE(lac.Date) BETWEEN dateFrom AND dateTo)
 	 AND  lac.ContractID = ContractID
      GROUP BY 
