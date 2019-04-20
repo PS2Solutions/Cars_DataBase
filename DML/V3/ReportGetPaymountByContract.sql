@@ -5,7 +5,7 @@ BEGIN
 	Select
 	CNTR.ReferenceNo As 'Reference Number',
 	Date_Format(CNTR.StartDate,'%d-%M-%Y') As 'Start Date',
-	Date_Format(CNTR.EndDate,'%d-%M-%Y') As 'End Date',
+	IFNULL(Date_Format(CNTR.EndDate,'%d-%M-%Y'),'') As 'End Date',
 	CNTR.AgrementReference As 'Agreement Reference', 
 	IFNULL(CNPY.Amount,0) as 'Collected Amount',
 	Date_Format(CNPY.Date,'%d-%M-%Y') As 'Collected Date'
