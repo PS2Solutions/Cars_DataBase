@@ -5,4 +5,4 @@ INSERT INTO `reports` ( `Name`, `SPName`, `IsFilterAvailable`, `ReportType`) VAL
 ('Labour Payslip', 'ReportLabourPayslip', 0, 3),
 ('Labour Details By Contract','ReportGetLabourDetailsByContract',1,1),
 ('Contract Details','ReportGetPaymountByContract',1,1),
-('Contract Labor Wage Details','LaborWageReport',1,1);
+('Labor Wage Details','LaborWageReport',1,0);
