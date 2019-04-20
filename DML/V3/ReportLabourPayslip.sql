@@ -14,8 +14,7 @@ FROM
 Left Join laborpayments LBP on LBRS.ID = LBP.LaborID
 Left join contractlaborchargedetails lac on lbrs.ID = lac.LaborID
 Left join extrapurchasedetails epd on lbrs.ID = epd.LaborID
-WHERE  LBRS.ID = LaborID AND 
-(DATE(LBRS.Date) BETWEEN dateFrom AND dateTo)
+WHERE  LBRS.ID = LaborID
 GROUP by
 	LBRS.ID) as LBRSD;
 	 END$$
