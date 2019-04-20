@@ -1,6 +1,5 @@
 Delete from reports;
 INSERT INTO `reports` ( `Name`, `SPName`, `IsFilterAvailable`, `ReportType`) VALUES
-('Contract Last Month Details ', 'GetContractLastMonthReport', NULL, 1),
 ('Labour Details By Date', 'GetLabourDetailsByDate ', 1, 2),
 ('Quotation Details', 'ReportGetQuotDetailsByDate', 1, 0),
 ('Labour Details By Contract', 'ReportGetLabourDetailsByContract', 1, 1),
