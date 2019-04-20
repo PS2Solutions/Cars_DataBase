@@ -17,7 +17,7 @@ labors L
      FROM 
      contractlaborchargedetails lac
 	 WHERE  (DATE(lac.Date) BETWEEN dateFrom AND dateTo)
-	 AND WHERE  lac.ContractID = ContractID
+	 AND  lac.ContractID = ContractID
      GROUP BY 
     lac.LaborID
      ) lacd ON L.ID = lacd.LaborId
@@ -29,10 +29,10 @@ labors L
      FROM 
      extrapurchasedetails epd
 	 WHERE  (DATE(epd.BillDate) BETWEEN dateFrom AND dateTo)
-	 AND WHERE  epd.ContractID = ContractID
+	 AND  epd.ContractID = ContractID
      GROUP BY 
     epd.LaborID
-     ) epdd ON L.ID = epdd.LaborId
+     ) epdd ON L.ID = epdd.LaborId;
 
 	 END$$
 DELIMITER ;
