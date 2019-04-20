@@ -14,7 +14,7 @@ Select CNTR.ID,
 	left join contractpayments CNPY on CNPY.ContractID = CNTR.ID
 	WHERE  CNTR.EndDate is NULL 
     	Group by CNTR.ID
-	order by CNPY.Date DESC
+	order by CNPY.Date DESC;
 	
   END$$
 DELIMITER ;
